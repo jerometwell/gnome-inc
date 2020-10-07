@@ -292,7 +292,7 @@ function clear_container(container) {
 function draw_choice_buttons(place, container) {
   choices = place.choices;
   clear_container(container);
-  
+
   for(var i = 0; i < choices.length; i = i + 1) {
     var choice = {
       destination : choices[i][0],
@@ -327,6 +327,9 @@ function build_image_element(src) {
   
 }
 
+/**
+ * load a list of resources off-screen
+ */
 function precache(asset_list, container) {
   clear_container(container);
   container.style.display = "none";
@@ -387,7 +390,7 @@ function draw_place(place_name){
   draw_choice_buttons(place, choices);
   draw_assets(place, assets)
   
-  // Interesting!
+  // preload traversable resources from current place
   precache(list_all_assets(traverse_places("intro", 0, 3)), document.getElementById("cache") );
   
 }
